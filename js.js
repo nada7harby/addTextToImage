@@ -23,23 +23,11 @@ $(document).ready(function() {
                    reader.onload = function (e) {
                        let img = new Image();
                        
-                       img.onload = function () {
-                           if (this.width > screen.width || this.height > screen.height) {
-                               alert('Please select a small image. The image width and height should be less than the screen width and height.');
-       
-                               document.getElementById('theText').style.display = 'none';
-                               document.getElementById('bt').style.display = 'none';
-                               document.getElementById('textArea').style.display = 'none';
-                               document.getElementById('myimage').src = '';
-                           }
-                           else {
+                      img.onload = function () {
+                          
                                document.getElementById('theText').style.display = 'block';
                                document.getElementById('bt').style.display = 'block';
                                document.getElementById('textArea').style.display = 'block';
-                           }
-
-                          
-                           
                        }
        
                        img.src = e.target.result;      // actual image. 
