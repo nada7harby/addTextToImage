@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="css.css" />
+  </head>
+  <body>
+    <!--File upload-->
+    <div class="container">
+      <div class="row parent align-items-center justify-content-around">
+        <div>
+          <p>
+            <input
+              type="submit"
+              id="btChooseImage"
+              onclick="chooseImage()"
+              value="Select an image"
+            />
+          </p>
+          <input
+            type="file"
+            id="file"
+            onchange="showImage(this)"
+            style="display: none; visibility: hidden; width: 1px"
+          />
+
+          <!--Textarea to enter some texts.-->
+          <p>
+            <textarea
+              onkeyup="writeText(this)"
+              id="textArea"
+              placeholder="Enter some value for text"
+              rows="2"
+              cols="50"
+            >
+            </textarea>
+          </p>
+
+          <ul>
+            <li>
+              <label for="size">Font-size</label>
+              <input type="number" id="size" value="35" />
+            </li>
+            <li>
+              <label for="color">Font-color</label>
+              <input type="color" id="color" />
+            </li>
+            <li>
+              <label for="family">font-famiiy</label>
+              <input list="type" id="family" value="Calibri" />
+              <datalist id="type">
+                <option value="'Courier New', Courier, monospace"></option>
+                <option
+                  value="'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"
+                ></option>
+                <option
+                  value="'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"
+                ></option>
+                <option value="sans-serif"></option>
+                <option value="Verdana, Geneva, Tahoma, sans-serif"></option>
+                <option
+                  value="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+                ></option>
+              </datalist>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div class="mainContainer" id="mainContainer">
+            <img src="ph.jpg" id="myimage" alt="" />
+
+            <!--The text, which is also draggable.-->
+            <div
+              id="theText"
+              onmousedown='this.style.border = "dashed 2px #FF7F27";'
+              style="max-width: 100%; word-wrap: break-word"
+            >
+              sample text
+            </div>
+          </div>
+
+          <!--Button to save the image with the text.-->
+          <p>
+            <input
+              type="button"
+              onclick="saveImageWithText();"
+              id="bt"
+              value="Save the Image"
+            />
+          </p>
+        </div>
+      </div>
+    </div>
+    <script src="js.js"></script>
+  </body>
+</html>
