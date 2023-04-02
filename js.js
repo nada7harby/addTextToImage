@@ -1,3 +1,4 @@
+var wid=document.getElementById("width")
 var family=document.getElementById("family");
 var img=document.getElementById("myimage");
 var y=document.getElementById("theText");
@@ -23,11 +24,23 @@ $(document).ready(function() {
                    reader.onload = function (e) {
                        let img = new Image();
                        
-                      img.onload = function () {
-                          
+                       img.onload = function () {
+               //             if (this.width > screen.width || this.height > screen.height) {
+               //                 alert('Please select a small image. The image width and height should be less than the screen width and height.');
+       
+               //                 document.getElementById('theText').style.display = 'none';
+               //                 document.getElementById('bt').style.display = 'none';
+               //                 document.getElementById('textArea').style.display = 'none';
+               //                 document.getElementById('myimage').src = '';
+               //             }
+               //             else {
                                document.getElementById('theText').style.display = 'block';
                                document.getElementById('bt').style.display = 'block';
                                document.getElementById('textArea').style.display = 'block';
+                           
+
+                          
+                           
                        }
        
                        img.src = e.target.result;      // actual image. 
@@ -48,12 +61,13 @@ $(document).ready(function() {
                if(t.length>12){
                               y.style.color=(`${color.value}`);
                               y.style.fontFamily=(`${family.value}`);
+                              y.style.width=(`${wid.value}px`)
                              }
                if(t.length>32){
                               y.style.fontSize = (`${size.value}px`);
-                               console.log(t.length)
                           }
                           if(t.length>img.width){
+                              console.log(t.length)
                               y.style.wordWrap = "break-word"
                               
                           }
