@@ -136,7 +136,7 @@ $(document).ready(function() {
                    // Assign text properties to the context.
                    ctx.font = fnt;
                    ctx.fillStyle = color;
-                   ctx.textAlign = txtAlign;
+                    ctx.textAlign = "center";
                                                     
                    // Now, we need the coordinates of the text.
                    let x; 		// coordinate.
