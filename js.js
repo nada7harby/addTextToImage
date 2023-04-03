@@ -162,7 +162,7 @@ $(document).ready(function() {
                                .replace('<br>', '')
                                .replace(';',''), 
                            x, 
-                           parseInt(paddingTop, 10) + parseInt(top, 10) + 10 + (i * 15));
+                           parseInt(paddingTop, 10) + parseInt(top, 10) + 10 + (i * 40));
                    }
        
                    // document.body.append(canvas);  
