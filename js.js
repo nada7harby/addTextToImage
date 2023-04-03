@@ -58,7 +58,7 @@ $(document).ready(function() {
            let writeText = (ele) => {
                t = ele.value;
                document.getElementById('theText').innerHTML = t.replace(/\n\r?/g, '<br />');
-               if(t.length>12){
+               if(t.length>1){
                               y.style.color=(`${color.value}`);
                               y.style.fontFamily=(`${family.value}`);
                               y.style.width=(`${wid.value}px`)
