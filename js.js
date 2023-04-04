@@ -58,19 +58,21 @@ $(document).ready(function() {
            let writeText = (ele) => {
                t = ele.value;
                document.getElementById('theText').innerHTML = t.replace(/\n\r?/g, '<br />');
-               if(t.length>1){
+               if(t.length>12){
                               y.style.color=(`${color.value}`);
                               y.style.fontFamily=(`${family.value}`);
-                              y.style.width=(`${wid.value}px`)
+                              y.style.width=(`${wid.value}px`);
+                              y.style.resize=("both");
+                             
                              }
                if(t.length>32){
                               y.style.fontSize = (`${size.value}px`);
-                          }
-                          if(t.length>img.width){
-                              console.log(t.length)
+                              }
+                              if(y.width>=img.width){
+                                console.log(img.width)
                               y.style.wordWrap = "break-word"
                               
-                          }
+                              }
            }
 
 
@@ -132,12 +134,18 @@ $(document).ready(function() {
                    let txtAlign = window.getComputedStyle(textContainer).textAlign;
                    let color = window.getComputedStyle(textContainer).color;
                    let fnt = window.getComputedStyle(textContainer).font;
+                   let words = window.getComputedStyle(textContainer).lineHeight;
+                   let wid=document.getElementById("theText").width
+                        if(t.length>20){
+                            console.log(wid);
+                        }
                  
                    // Assign text properties to the context.
                    ctx.font = fnt;
                    ctx.fillStyle = color;
-                    ctx.textAlign = "center";
-                                                    
+                   ctx.textAlign = "center";
+                    ctx.lineHeight=words; 
+                  //  ctx.width=wid;                           
                    // Now, we need the coordinates of the text.
                    let x; 		// coordinate.
                    if (txtAlign === 'right') {
@@ -154,17 +162,18 @@ $(document).ready(function() {
                    let str = t.replace(/\n\r?/g, '<br />').split('<br />');
        
                    // finally, draw the text using Canvas fillText() method.
-                   for (let i = 0; i <= str.length - 1; i++) {
+                    for (let i = 0; i <= str.length - 1; i++) {
                                   
-                       ctx.fillText(
-                           str[i]
-                               .replace('</div>','')
-                               .replace('<br>', '')
-                               .replace(';',''), 
-                           x, 
-                           parseInt(paddingTop, 10) + parseInt(top, 10) + 10 + (i *90);
-                   }
+                        ctx.fillText(
+                            str[i]
+                                .replace('</div>','')
+                                .replace('<br>','<br>')
+                                .replace(';',''), 
+                            x, 
+                            parseInt(paddingTop, 10) + parseInt(top, 10) + 10 + (i * 90));
+                    }
        
+             //   printAt(ctx,t,x,y,15,90);
                    // document.body.append(canvas);  
                }
        
@@ -178,3 +187,33 @@ $(document).ready(function() {
                }
            }
          
+    // function printAt( context , text, x, y, lineHeight, fitWidth)
+    // {
+        
+    // fitWidth = fitWidth || 0;
+    
+    // if (fitWidth <= 0)
+    // {
+    //     }
+    //     fitWidth = fitWidth || 0;
+        
+    //     if (fitWidth <= 0)
+    //     {
+    //          context.fillText( text, x, y );
+    //         return;
+    //     }
+        
+    //     for (var idx = 1; idx <= text.length; idx++)
+    //     {
+    //         var str = text.substr(0, idx);
+    //         console.log(str, context.measureText(str).width, fitWidth);
+    //         if (context.measureText(str).width > fitWidth)
+    //         {
+    //             context.fillText( text.substr(0, idx-1), x, y );
+    //             printAt(context, text.substr(idx-1), x, y + lineHeight, lineHeight,  fitWidth);
+    //             return;
+    //         }
+    //     }
+    //     context.fillText( text, x, y );
+    // }
+    
