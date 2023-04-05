@@ -65,7 +65,7 @@ $(document).ready(function() {
                               y.style.resize=("both");
                              
                              }
-               if(t.length>32){
+               if(t.length>20){
                               y.style.fontSize = (`${size.value}px`);
                               }
                               if(y.width>=img.width){
