@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        
+    <script>
+         const myList = document.querySelector("ul");
+const myRequest = new Request("adkar.json");
+
+fetch(myRequest)
+  .then((response) => response.json())
+  .then((data) => {
+    for (const product of data.products) {
+      const listItem = document.createElement("li");
+      listItem.appendChild(document.createElement("strong")).textContent =
+        product.Name;
+      listItem.append(` can be found in ${product.Location}. Cost: `);
+      listItem.appendChild(
+        document.createElement("strong")
+      ).textContent = `£${product.Price}`;
+      myList.appendChild(listItem);
+    }
+  })
+  .catch(console.error);
+
+    </script>
+
+</body>
+</html>
