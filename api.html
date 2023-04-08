@@ -8,28 +8,32 @@
 </head>
 <body>
 
+    <div>
+        <h1 id="cat"></h1>
+        <h3 id="cont"></h3>
+        <p id="des"></p>
+        <p id="ref"></p>
+    </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>  
     <script>
-         const myList = document.querySelector("ul");
-const myRequest = new Request("adkar.json");
+        const myList = document.querySelector("ul");
+        const myRequest = new Request("https://nada7harby.github.io/addTextToImage/adkar.json");
 
-fetch(myRequest)
-  .then((response) => response.json())
-  .then((data) => {
-    for (const product of data.products) {
-      const listItem = document.createElement("li");
-      listItem.appendChild(document.createElement("strong")).textContent =
-        product.Name;
-      listItem.append(` can be found in ${product.Location}. Cost: `);
-      listItem.appendChild(
-        document.createElement("strong")
-      ).textContent = `£${product.Price}`;
-      myList.appendChild(listItem);
-    }
-  })
-  .catch(console.error);
+        fetch(myRequest)
+          .then((response) => response.json())
+          .then((data) => {
+            fNum = Math.floor(Math.random() * Object.values(data).length) ;
+            hadith = Object.values(data)[fNum];
+            sNum = Math.floor(Math.random() * Object.values(hadith).length) ;
+            theHadith = hadith[sNum];
+            console.log( theHadith );
+            document.getElementById("cat").textContent = theHadith.category;
+            document.getElementById("cont").textContent = theHadith.content ;
+            document.getElementById("des").textContent = theHadith.description;
+            document.getElementById("ref").textContent = theHadith.refrence;
+          })
+          .catch(console.error);
 
     </script>
 
