@@ -15,26 +15,31 @@
 <body>
 
     <div>
-        <!-- <h1 id="cat"></h1>
+        <h1 id="cat"></h1>
         <h3 id="cont"></h3>
-        <p id="des"></p>
-        <p id="ref"></p> -->
+        <p id="hadith"></p>
+        <p id="ref"></p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>  
     <script>
-        const myList = document.querySelector("ul");
-        const myRequest = new Request("https://api.hadith.gading.dev/books/");
+        const myList = ["abu-daud","ahmad", "bukhari","darimi","ibnu-majah","malik","muslim","nasai","tirmidzi"];
+        const arList = ["ابوداود","احمد", "البخاري","سنن الدارمي","ابو ماجه","مالك","مسلم","النسائي","الترمذي"];
+        lNum = Math.floor(Math.random() * myList.length) ;
+        const myRequest = new Request(`https://api.hadith.gading.dev/books/${myList[lNum]}?range=1-50`);
 
         fetch(myRequest)
           .then((response) => response.json())
           .then((data) => {
-            fNum = Math.floor(Math.random() * Object.values(Object.values(data)[2]).length) ;
-            hadith = Object.values(Object.values(data)[2])[fNum];
-            sNum = Math.floor(Math.random() * Object.values(hadith).length) ;
-            theHadith = hadith[sNum];
-            console.log( Object.values(Object.values(data)[2])[2] );
-            
+            fNum = Math.floor(Math.random() * data.data.hadiths.length) ;
+            hadith = data.data.hadiths[fNum];
+            // sNum = Math.floor(Math.random() * Object.values(hadith).length) ;
+            // theHadith = hadith[sNum];
+            // console.log( Object.values(Object.values(data)[2])[2] );
+            console.log( data );
+            console.log( hadith.arab );
+            document.getElementById("hadith").textContent = hadith.arab ;
+            document.getElementById("ref").textContent = "من كتاب " + arList[lNum] ;
           })
           .catch(console.error);
 
