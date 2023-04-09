@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ربنا يرحمك يا فاطمة</title>
+
+    <style>
+      div{
+        text-align: center;
+      }
+    </style>
+  </head>
+<body>
+
+    <div>
+        <!-- <h1 id="cat"></h1>
+        <h3 id="cont"></h3>
+        <p id="des"></p>
+        <p id="ref"></p> -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>  
+    <script>
+        const myList = document.querySelector("ul");
+        const myRequest = new Request("https://api.hadith.gading.dev/books/");
+
+        fetch(myRequest)
+          .then((response) => response.json())
+          .then((data) => {
+            fNum = Math.floor(Math.random() * Object.values(Object.values(data)[2]).length) ;
+            hadith = Object.values(Object.values(data)[2])[fNum];
+            sNum = Math.floor(Math.random() * Object.values(hadith).length) ;
+            theHadith = hadith[sNum];
+            console.log( Object.values(Object.values(data)[2])[2] );
+            
+          })
+          .catch(console.error);
+
+    </script>
+
+</body>
+</html>
